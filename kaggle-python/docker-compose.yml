@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kaggle-python
+    container_name: kaggle-env
+    volumes:
+      - ./docker:/work:delegated
+    ports:
+      - 8080:8080
+    working_dir: /work
+    # command: jupyter notebook --notebook-dir=/work --ip=0.0.0.0 --allow-root --no-browser
+    command: jupyter lab --LabApp.notebook_dir=/work --ip=0.0.0.0 --allow-root --LabApp.token=''

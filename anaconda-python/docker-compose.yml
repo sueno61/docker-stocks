@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: anaconda-python
+    container_name: anaconda-ds
+    ports:
+      - 8888:8888
+    volumes:
+      - /home/ueno/PythonProjects:/work
+    working_dir: /work
+    # command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
+    command: jupyter notebook --notebook-dir=/work --ip=0.0.0.0 --allow-root --NotebookApp.token='' --no-browser
