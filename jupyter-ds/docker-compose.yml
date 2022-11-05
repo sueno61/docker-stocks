@@ -1,0 +1,17 @@
+version: "3"
+services:
+  notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sueno61/jupyter-ds
+    container_name: jupyter-ds
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./docker/work:/home/jovyan/work:delegated
+    working_dir: /home/jovyan/work
+    # command: start-notebook.sh --NotebookApp.token=''
+    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''

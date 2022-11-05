@@ -1,0 +1,42 @@
+#
+# user TEST
+# 　　作成したユーザでpip実行
+#  　　※sudo に加える必要があった！
+#
+
+FROM python:3.8
+
+RUN apt-get update \
+&& apt-get install -y sudo wget vim fonts-ipaexfont
+
+RUN apt-get clean && apt clean && rm -rf /var/lib/apt/lists/*
+
+
+# 一般ユーザ追加
+ENV USER taku
+RUN adduser --disabled-password --gecos "" ${USER} 
+RUN gpasswd -a ${USER} sudo
+RUN echo "${USER}:${USER}" | chpasswd
+
+WORKDIR /tmp
+
+RUN mkdir /work
+WORKDIR /work
+
+RUN pip install numpy pandas
+
+# ユーザ変更
+USER ${USER}
+
+# COPY ./python-env/requirements.txt ${PWD}
+
+RUN pip install flask  # ← /home/taku/.lib/python3.8/site-packages にインストールされる
+
+
+CMD ["bash"]
+
+
+# <注意>
+#　ビルド後、一般ユーザでpipインストールすると、Dockerfile内でのインストール同様、
+#　ユーザのホームディレクトリ配下にインストールされるが、importできない！
+#　※ sudo pip install だと、/usr/local/lib/python* 配下にインストールされ、import 可能

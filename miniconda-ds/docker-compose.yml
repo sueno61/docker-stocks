@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  notebook:
+    build: .
+    image: miniconda-ds
+    container_name: miniconda-ds
+    ports:
+      - 8888:8888
+    volumes:
+      - /Users/sueno/PythonWP:/work
+    working_dir: /work
+    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
+    # command: jupyter notebook --notebook-dir=/work --ip=0.0.0.0 --allow-root --NotebookApp.token='' --no-browser

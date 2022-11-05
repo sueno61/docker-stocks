@@ -1,0 +1,16 @@
+notebook
+jupyterlab
+# jedi==0.17.2
+
+pylint
+cython
+# pystan==2.19.1.1
+pystan
+arviz
+
+japanize-matplotlib
+mecab-python3
+openpyxl
+
+pandas-profiling
+plotly

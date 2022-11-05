@@ -1,0 +1,28 @@
+numpy
+pandas
+pandas-profiling
+openpyxl
+xlrd
+matplotlib
+seaborn
+scikit-learn
+statsmodels
+japanize-matplotlib
+
+# notebook
+jupyterlab
+# jedi==0.17.2
+
+mecab-python3
+janome
+gensim
+
+pylint
+cython
+pystan==2.19.1.1
+arviz
+
+tensorflow
+keras
+torch
+torchvision

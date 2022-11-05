@@ -1,0 +1,15 @@
+version: "3"
+services:
+  rstudio:
+    build:
+      context: .
+      dockerfile: Dockerfile.verse
+    image: rstudio-stan
+    container_name: rstudio-ds
+    ports:
+      - "8787:8787"
+    environment:
+      - PASSWORD=password
+      - DISABLE_AUTH=true  # パスワード不要
+    volumes:
+      - ./docker:/home/rstudio/project:delegated

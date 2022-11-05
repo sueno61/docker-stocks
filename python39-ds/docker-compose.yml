@@ -1,0 +1,14 @@
+version: '3'
+services:
+  python_env:
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: sueno61/python39-ds
+    container_name: python39-ds
+    volumes:
+      - /your/PythonWorkspace/dir:/work
+    ports:
+      - '8888:8888'
+    working_dir: /work
+    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''

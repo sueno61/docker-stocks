@@ -1,0 +1,1 @@
+docker-machine create --virtualbox-disk-size "30000" --virtualbox-memory "4096" --driver virtualbox default
