@@ -1,0 +1,23 @@
+docker run --name ds-lab -p 8888:8888 -v o:\Python_pj:/work  anaconda
+docker run --name ds-cmd -it -v o:\Python_pj:/work  anaconda /bin/bash
+docker run --rm -it -v o:\Python_pj:/work  anaconda /bin/bash
+
+
+docker run --rm -p 8888:8888 -v /home/ueno/PythonWP:/work  anaconda
+docker run --rm -it -v /home/ueno/PythonWP:/work  anaconda bash
+
+
+docker run --name ds-lab -p 8888:8888 -v /home/ueno/PythonWP:/work  anaconda
+docker run --name ds-cmd -it -v /home/ueno/PythonWP:/work  anaconda bash
+
+<ubuntu>
+×　docker run --rm -p 8888:8888 -v ./PythonWP:/work  anaconda
+○　docker run --rm -p 8888:8888 -v $PWD/PythonWP:/work  anaconda
+○　docker run --rm -p 8888:8888 -v $(pwd)/PythonWP:/work  anaconda
+
+
+AWSのubuntuでdockerインストール
+$ sudo apt-get update
+$ sudo apt-get install docker.io
+$ sudo gpasswd -a ubuntu docker
+(ユーザubuntuをグループdockerに追加する）
